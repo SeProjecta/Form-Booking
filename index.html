@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Formulir Booking</title>
+        <!-- Bootstrap icon-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap) -->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/kalender.css" rel="stylesheet" />
+        <link href="css/darmastyle.css" rel="stylesheet" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- Firebase v8 compat -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+
+    <body class="" id="page-top">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-capitalize" href="#page-top"><img src="assets/img/sept.png" alt="..." /> Projecta.</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-capitalize ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Layanan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Tim</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead -->
+        <header class="masthead bg-fluid">
+            <div class="container">
+                <div class="masthead-subheading h4 font-monospace">what's up everyone</div>
+                <div class="masthead-heading display-1 fw-bold pb-4">Sedikit <kbd class="text-warning">bicara</kbd> Banyak <kbd class="text-warning">bekerja</kbd>.</div>
+                <a class="btn btn-warning btn-xl text-capitalize" href="#about">Selengkapnya</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section class="page-section" id="about">
+            <div class="container">
+                <!-- <div class="text-center">
+                    <h2 class="section-heading text-capitalize fw-bold">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div> -->
+
+                <!-- Konten tentang layanan -->
+                <div class="about-content">
+                    <h2 class="about-title text-center">📸 Yuk, Abadikan Momen Graduasimu dengan Keren!</h2>
+                    <p class="text-center">
+                        Jangan sampai kehabisan slot! Cuma<br />
+                        <strong class="h3 fw-bold" style="color: #198754">IDR 200.000</strong>, dapetin:
+                    </p>
+
+                    <!-- Kotak fitur -->
+                    <div class="features-container row g-4 gap-0 p-2 pt-5 mx-2">
+                        <div class="container col-sm-12 col-md-6 col-lg-4 mb-3">
+                            <div class="feature-box h-100 w-100">
+                                <div class="feature-icon d-flex justify-content-center mb-3">
+                                    <i class="bi bi-camera-fill display-1 mt-2"></i>
+                                </div>
+                                <div class="feature-text pb-md-4 w-75">Sesi foto eksklusif 30 menit</div>
+                            </div>
+                        </div>
+                        <div class="container col-sm-12 col-md-6 col-lg-4 mb-3">
+                            <div class="feature-box h-100 w-100">
+                                <div class="feature-icon d-flex justify-content-center mb-3">
+                                    <i class="bi bi-images display-1 mt-2"></i>
+                                </div>
+                                <div class="feature-text pb-md-4 w-75">Edit profesional + file langsung ke Google Drive</div>
+                            </div>
+                        </div>
+                        <div class="container col-sm-12 col-md-6 col-lg-4 mb-3">
+                            <div class="feature-box h-100">
+                                <div class="feature-icon d-flex justify-content-center mb-3">
+                                    <i class="bi bi-person-bounding-box display-2 mt-2"></i>
+                                </div>
+                                <div class="feature-text pb-md-4 w-75">Bisa Bareng Teman Maksimal 3 orang</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Sekarang -->
+                    <h2 class="booking-title text-center pt-3 pb-3 display-4 fw-bold"><kbd class="text-warning">Booking</kbd> Sekarang!</h2>
+                    <div class="steps-container row g-4 gap-0 p-2 mx-2 pt-4">
+                        <div class="container col-sm-12 mb-2 col-md-6 col-lg-4">
+                            <div class="step-box h-100 w-100">
+                                <span class="step-number">01</span>
+                                <p class="fw-bolder">Cek Jadwal Kosong</p>
+                            </div>
+                        </div>
+                        <div class="container col-sm-12 mb-2 col-md-6 col-lg-4">
+                            <div class="step-box h-100 w-100">
+                                <span class="step-number">02</span>
+                                <p class="fw-bolder">Pilih tanggalmu</p>
+                            </div>
+                        </div>
+                        <div class="container col-sm-12 mb-2 col-md-6 col-lg-4">
+                            <div class="step-box h-100 w-100">
+                                <span class="step-number">03</span>
+                                <p class="fw-bolder">Isi Formulir 2 Menit!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Info -->
+                    <p class="chat-info fw-semi-bold">Masih bingung? Chat kita di <kbd>WA/IG</kbd>, ya!</p>
+                    <div class="container justify-content-center d-flex">
+                        <div class="col-2 text-center">
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/septa_iwb?igsh=b2Fyam00Mzh0bmth" aria-label="Parveen Anand Twitter Profile"
+                                ><i class="bi bi-chat-dots-fill"></i
+                            ></a>
+                        </div>
+                        <div class="col-2 text-center">
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/septa_iwb?igsh=b2Fyam00Mzh0bmth" aria-label="Parveen Anand Twitter Profile"
+                                ><i class="bi bi-instagram"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="page-section bg-primary pt-2 pb-4" id="services">
+            <div class="container justify-content-center">
+                <div class="text-center">
+                    <h2 class="section-heading text-capitalize">Layanan</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="col d-lg-flex text-center justify-content-lg-around">
+                    <div class="col bg-body-secondary m-2 p-3 pt-5">
+                        <span class="bg-d">
+                            <i class="bi bi-calendar-date display-1 text-warning"></i>
+                        </span>
+                        <h4 class="my-3">Jadwal Kami</h4>
+
+                        <!-- Kalender -->
+                        <div class="body-calendar"></div>
+                        <div class="container-calendar">
+                            <div class="left">
+                                <div class="calendar">
+                                    <div class="controls pt 3">
+                                        <i class="prev"
+                                            ><svg class="line" viewBox="0 0 24 24">
+                                                <path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke-miterlimit="10"></path></svg
+                                        ></i>
+                                        <div class="date"></div>
+                                        <i class="next"
+                                            ><svg class="line" viewBox="0 0 24 24">
+                                                <path d="M8.91003 19.9201L15.43 13.4001C16.2 12.6301 16.2 11.3701 15.43 10.6001L8.91003 4.08008" stroke-miterlimit="10"></path></svg
+                                        ></i>
+                                    </div>
+                                    <div class="weekdays pb-2">
+                                        <div>Sun</div>
+                                        <div>Mon</div>
+                                        <div>Tue</div>
+                                        <div>Wed</div>
+                                        <div>Thu</div>
+                                        <div>Fri</div>
+                                        <div>Sat</div>
+                                    </div>
+                                    <div class="days"></div>
+                                    <div class="controls">
+                                        <div class="input-column"><input type="text" class="date-input" placeholder="mm/yyyy" /><button class="goto-btn">Go</button></div>
+
+                                        <button class="today-btn">Today</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="today-date">
+                                    <div class="event-day text-start">wed</div>
+                                    <div class="event-date">12th december 2022</div>
+                                </div>
+                                <div class="events"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="col bg-body-secondary m-2 p-3 pt-5">
+                        <!-- <img class="mx-auto rounded-circle" src="assets/img/team/septa.png" alt="..." /> -->
+                        <span class="bg-d">
+                            <i class="bi bi-ui-checks display-1 text-warning"></i>
+                        </span>
+                        <h4 class="my-3">Formulir Anda</h4>
+                        <form id="bookingForm">
+                            <div class="mb-3 text-start">
+                                <label for="name" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nama Lengkap" />
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="phone" class="form-label">No Whatsapp</label>
+                                <input type="number" class="form-control" id="phone" placeholder="Contoh: 087...." />
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="phone" class="form-label">Asal Sekolah</label>
+                                <select name="" id="sekolah" class="form-select">
+                                    <option selected>Pilih Sekolah</option>
+                                    <option value="1">SMA Negeri 1 Singaraja</option>
+                                    <option value="2">SMA Negeri 2 Singaraja</option>
+                                    <option value="3">SMA Negeri 3 Singaraja</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="date" class="form-label">Tanggal Booking</label>
+                                <input type="date" id="dateBooking" class="form-control text-box" />
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="startTime" class="mb-2 pt-3 text-center">Waktu Mulai:</label>
+                                        <input type="time" id="startTime" class="form-control ml-sm-2" required onchange="updateEndTime()" />
+                                    </div>
+                                    <div class="col">
+                                        <label for="endTime" class="mb-2 pt-3 text-center">Waktu Selesai:</label>
+                                        <input type="time" id="endTime" class="form-control ml-sm-2" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="phone" class="form-label">Jumlah Siswa</label>
+                                <select name="" id="jumlah" class="form-select">
+                                    <option selected>Pilih Jumlah</option>
+                                    <option value="1">1 siswa</option>
+                                    <option value="2">2 siswa</option>
+                                    <option value="3">3 siswa</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="exampleFormControlTextarea1" class="form-label">Pesan Tambahan</label>
+                                <textarea class="form-control" id="textarea" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-capitalize">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://tbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="https://formsubmit.co/putuagussumerta123@gmail.com" method="POST">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" id="email" name="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <textarea class="form-control" id="message" name="textarea" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://tbootstrap.com/solution/contact-forms">https://tbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage">
+                        <div class="text-center text-danger mb-3">Error sending message!</div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Team-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-capitalize">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/septa.png" alt="..." />
+                            <h4>Sept.</h4>
+                            <p class="text-muted">Lead Project</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/septa_iwb?igsh=b2Fyam00Mzh0bmth" aria-label="Parveen Anand Twitter Profile"
+                                ><i class="bi bi-instagram"></i
+                            ></a>
+                            <!-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/agus.png" alt="..." />
+                            <h4>Agus Sumesta</h4>
+                            <p class="text-muted">Lead Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/agus_sumesta?igsh=ajlmMzRkcW1rbG0x" aria-label="Diana Petersen Twitter Profile"
+                                ><i class="bi bi-instagram"></i
+                            ></a>
+                            <!-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a> -->
+                            <!-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <p class="large text-muted">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients-->
+
+        <!-- Footer -->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-t">Copyright &copy; Your Website 2023</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2 text-center" href="#!" aria-label="Twitter"><i class="bi bi-instagram text-center"></i></a>
+                        <!-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+            crossorigin="anonymous"
+        ></script>
+        <!-- Core theme JS -->
+        <script src="js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>
