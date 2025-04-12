@@ -376,12 +376,8 @@ async function renderEventsForMonth() {
                 const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah;
 
                 divB.innerHTML = `
-                    <p><strong>Nama: ${b.Nama}</strong><br>
-                    No WA: ${b.NoWa}<br> 
-                    Sekolah: ${namaSekolah}<br>
-                    Waktu: ${b.JamMulai} - ${b.JamSelesai}<br>
-                   Jumlah Siswa: ${b.JumlahSiswa}<br>
-                    Pesan: ${b.PesanTambahan || "-"}
+                    <p>Sekolah: ${namaSekolah}<br>
+                    Waktu: ${b.JamMulai} - ${b.JamSelesai}
                     </p>`;
 
                 wrapper.appendChild(divB);
