@@ -376,8 +376,12 @@ async function renderEventsForMonth() {
                 const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah;
 
                 divB.innerHTML = `
-                    <p>Sekolah: ${namaSekolah}<br>
-                    Waktu: ${b.JamMulai} - ${b.JamSelesai}
+                    <p><strong>Nama: ${b.Nama}</strong><br>
+                    No WA: ${b.NoWa}<br> 
+                    Sekolah: ${namaSekolah}<br>
+                    Waktu: ${b.JamMulai} - ${b.JamSelesai}<br>
+                   Jumlah Siswa: ${b.JumlahSiswa}<br>
+                    Pesan: ${b.PesanTambahan || "-"}
                     </p>`;
 
                 wrapper.appendChild(divB);
@@ -404,6 +408,7 @@ function updateSelectedDateDisplay(dateStr) {
 }
 
 // menampilkan booking untuk tanggal yang dipilih
+// menampilkan booking untuk tanggal yang dipilih
 async function renderEventsForSelectedDate(dateStr) {
     const snap = await db.ref("booking/" + dateStr).once("value");
     const data = snap.val();
@@ -412,13 +417,14 @@ async function renderEventsForSelectedDate(dateStr) {
 
     const wrapper = document.createElement("div");
     wrapper.className = "data-booking";
-    wrapper.innerHTML = `<div class="dataTanggalbooking">Booking Pada ${dateStr} <span class="slot">(${data?.slot ?? 0} slot tersisa)</span></div>`;
 
-    const bookings = data?.bookings || {};
-    if (Object.keys(bookings).length === 0) {
+    // Periksa apakah ada data booking
+    if (!data || !data.bookings || Object.keys(data.bookings).length === 0) {
+        wrapper.innerHTML += `<div class="dataTanggalbooking">Booking Pada ${dateStr} <span class="slot">(5 slot tersisa)</span></div>`;
         wrapper.innerHTML += `<p class="no-booking">Belum ada booking.</p>`;
     } else {
-        Object.values(bookings).forEach(b => {
+        wrapper.innerHTML += `<div class="dataTanggalbooking">Booking Pada ${dateStr} <span class="slot">(${data.slot ?? 0} slot tersisa)</span></div>`;
+        Object.values(data.bookings).forEach(b => {
             const divB = document.createElement("div");
             divB.className = "booking-item";
             const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah; // Jika tidak ditemukan, gunakan ID sebagai fallback
