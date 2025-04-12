@@ -375,10 +375,14 @@ async function renderEventsForMonth() {
                 // Ganti ID dengan nama menggunakan schoolData
                 const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah;
 
-                divB.innerHTML =`
-                Sekolah: ${namaSekolah}<br>
+                divB.innerHTML = `
+                    <p><strong>Nama: ${b.Nama}</strong><br>
+                    No WA: ${b.NoWa}<br> 
+                    Sekolah: ${namaSekolah}<br>
                     Waktu: ${b.JamMulai} - ${b.JamSelesai}<br>
-                   `;
+                   Jumlah Siswa: ${b.JumlahSiswa}<br>
+                    Pesan: ${b.PesanTambahan || "-"}
+                    </p>`;
 
                 wrapper.appendChild(divB);
             });
@@ -425,12 +429,8 @@ async function renderEventsForSelectedDate(dateStr) {
             divB.className = "booking-item";
             const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah; // Jika tidak ditemukan, gunakan ID sebagai fallback
             divB.innerHTML = `
-                <p><strong>Nama: ${b.Nama}</strong><br>
-                    No WA: ${b.NoWa}<br> 
-                    Sekolah: ${namaSekolah}<br>
-                    Waktu: ${b.JamMulai} - ${b.JamSelesai}<br>
-                   Jumlah Siswa: ${b.JumlahSiswa}<br>
-                    Pesan: ${b.PesanTambahan || "-"}
+                <p>Sekolah: ${namaSekolah}<br>
+                    Waktu: ${b.JamMulai} - ${b.JamSelesai}
                     </p>
             `;
             wrapper.appendChild(divB);
