@@ -260,7 +260,13 @@ form.addEventListener("submit", async e => {
     const { isConflict, recommendedStartTime, recommendedEndTime } = await validateBookingTime(dateValue, startTimeValue, endTimeValue, schoolValue);
 
     if (isConflict) {
-        alert(`Waktu yang Anda pilih bentrok dengan sesi lain.\nRekomendasi waktu: ${recommendedStartTime} - ${recommendedEndTime}`);
+        // alert(`Waktu yang Anda pilih bentrok dengan sesi lain.\nRekomendasi waktu: ${recommendedStartTime} - ${recommendedEndTime}`);
+        Swal.fire({
+            icon: "warning",
+            title: "Waktu yang Anda pilih bentrok dengan sesi lain.",
+            text: `Rekomendasi waktu: ${recommendedStartTime} - ${recommendedEndTime}`
+            // footer: '<a href="#">Why do I have this issue?</a>'
+        });
         return;
     }
 
@@ -370,12 +376,8 @@ async function renderEventsForMonth() {
                 const namaSekolah = sekolahData[b.NamaSekolah] || b.NamaSekolah;
 
                 divB.innerHTML = `
-                    <p><strong>Nama: ${b.Nama}</strong><br>
-                    No WA: ${b.NoWa}<br> 
-                    Sekolah: ${namaSekolah}<br>
-                    Waktu: ${b.JamMulai} - ${b.JamSelesai}<br>
-                   Jumlah Siswa: ${b.JumlahSiswa}<br>
-                    Pesan: ${b.PesanTambahan || "-"}
+                    <p>Sekolah: ${namaSekolah}<br>
+                    Waktu: ${b.JamMulai} - ${b.JamSelesai}
                     </p>`;
 
                 wrapper.appendChild(divB);
@@ -435,7 +437,6 @@ async function renderEventsForSelectedDate(dateStr) {
 
     eventsContainer.appendChild(wrapper);
 }
-
 
 // Pastikan DOM selesai dimuat sebelum inisialisasi kalender
 document.addEventListener("DOMContentLoaded", () => {
