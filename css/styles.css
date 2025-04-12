@@ -13313,6 +13313,71 @@ section#contact form#contactForm :-ms-input-placeholder {
     margin-bottom: 10px;
 }
 
+.buttoon {
+    width: 50px; /* Ukuran persegi */
+    height: 50px;
+    border: 2px solid #ffc800; /* Warna border */
+    border-radius: 10px; /* Sudut lengkung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.buttoon:hover {
+    transform: scale(1.05);
+
+    background-color: #ffcc12;
+}
+
+.buttoon i {
+    font-size: 1.5rem; /* Ukuran icon */
+    /* color: #ffc800; Warna icon */
+}
+.buttoon i:hover {
+    font-size: 1.75rem; /* Ukuran icon */
+    color: #fff !important; /* Warna icon */
+}
+
+.buttoon {
+    transition: all 0.3s ease;
+}
+
+.buttoonf {
+    width: 40px; /* Ukuran persegi */
+    height: 40px;
+    border: 2px solid #000813 !important; /* Warna border */
+    border-radius: 10px; /* Sudut lengkung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.buttoonf:hover {
+    transform: scale(1.05);
+
+    background-color: #000813 !important;
+}
+
+.buttoonf i {
+    font-size: 1rem; /* Ukuran icon */
+    color: #000813 !important; /* Warna icon */
+}
+.buttoonf i:hover {
+    font-size: 1.5rem; /* Ukuran icon */
+    color: #fff !important; /* Warna icon */
+}
+
+.buttoonf {
+    transition: all 0.3s ease;
+}
+
+
 .chat-info {
     text-align: center;
     margin-top: 20px;
